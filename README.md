@@ -42,6 +42,7 @@ figure size: (width=4.296, height=2.655)
 savefig format: eps
 savefig.dpi: 900 
 seaborn.style: 'seaborn-whitegrid' & "seaborn-paper"
+plt.switch_backend: pgf (better for saving figs in eps and pdf, but no preview)
 ```
 
 ## Prerequisites
