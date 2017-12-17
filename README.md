@@ -1,8 +1,10 @@
 # MplDecorator
 
-Python decorator for matplotlib and seaborn plots. Users only need to add one line on top of a plotting function to set pre-customized styles without changing current plot styles. The current version support LaTex decorator.
+Python decorator for matplotlib and seaborn plots. Users only need to add one line on top of a plotting function to set pre-customized styles without changing current plot styles. The current version supports LaTex decorator.
 
-This tool is built on
+The internal color scheme for multi-line plots is inherited from [Yi-Xin Liu's mpltex](https://github.com/liuyxpp/mpltex)'s color file and is modified to be compatible in Python 3.  The default scheme is Tableau classic 10 and can be changed to ColorBrewer Set 1 and Tableau classic 20 in the [color.py](https://github.com/yu45020/MplDecorator/blob/master/MplDecorator/colors.py) file.  For information on Tableau scheme can be found in [Palettable: Color palettes for Python](https://jiffyclub.github.io/palettable/). 
+
+This tool is inspired by and built on
 [Yi-Xin Liu's mpltex](https://github.com/liuyxpp/mpltex) and 
 [masasin's latexipy](https://github.com/masasin/latexipy)
 
@@ -11,7 +13,8 @@ R users may want to check ggpubr to easily get publication-ready plots.
 
 ## Installing
 
-1. In terminal, type 
+In terminal, type 
+
     ```
     pip install git+https://github.com/yu45020/MplDecorator/
     ```
@@ -21,19 +24,26 @@ or. Download the package and unzip it. In terminal and the directory of the pack
     ```
 
 ## Known Issues
+
 1. Must define a plot function to use the decorator.
 2. In order to save in eps format, plots must be saved inside the plot function. Saving in PDF format will result in error (may be use.LaTex error)
-3. To convert a eps file to PDF, insert them into a latex file and compile that file, or type the following code in terminal
-    ```
-    epstopdf "file_name.eps"
-    ```
+3. To convert a eps file to PDF, insert them into a latex file and compile that file, or type the following code in python:
 
+   
+```python
+import subprocess
+
+subprocess.call(["epstopdf", "fig_name.eps"])
+# Names with empty space is supported. A pdf with the same name will be created.
+# To change file name, use the following:
+# subprocess.call(["epstopdf", "--outfile", "outfig_name.pdf", "fig_name.eps"])
+```
 
 ## Available Decorators
 
 ### @MplDecorator.latex_decorator
 ```
-Parameters can be customized in "latex.py": 
+Parameters can be customized in [latex.py](https://github.com/yu45020/MplDecorator/blob/master/MplDecorator/latex.py: 
 
 font size for all: 8
 font family: serif
@@ -44,6 +54,17 @@ savefig.dpi: 900
 seaborn.style: 'seaborn-whitegrid' & "seaborn-paper"
 plt.switch_backend: pgf (better for saving figs in eps and pdf, but no preview)
 ```
+
+## Helper Function 
+
+### Line Style Iterator
+
+``` python
+MplDecorator.linestyles(colors, lines, markers, hollow_styles, marker_size)
+```
+Default values are supplied. Marker_size is 0.5 by default. If don't want marker in lines, set markers = False. 
+
+To modify this function, please check [styles.py](https://github.com/yu45020/MplDecorator/blob/master/MplDecorator/styles.py)
 
 ## Prerequisites
 Python 3
@@ -83,8 +104,7 @@ def text_plot():
 text_plot()
 os.system('epstopdf "With Decorator.eps"')
 ```
-
-![with decorator](https://user-images.githubusercontent.com/28139045/33397655-29ba6880-d501-11e7-9068-ad3b96f1981d.png)
+<img src="https://user-images.githubusercontent.com/28139045/33397655-29ba6880-d501-11e7-9068-ad3b96f1981d.png" width="600">
 
 ```python
 def text_plot2():
@@ -103,7 +123,10 @@ def text_plot2():
 text_plot2()
 os.system('epstopdf "After Decorator.eps"')
 ```
-![no decorator](https://user-images.githubusercontent.com/28139045/33397652-29557146-d501-11e7-9967-7fefa71fd639.png)
+
+(Note: this is the default plot, and its settings are not changed by the previous decorator)
+
+<img src="https://user-images.githubusercontent.com/28139045/33397652-29557146-d501-11e7-9967-7fefa71fd639.png" width="600">
 
 ```python
 @MplDecorator.latex_decorator
@@ -123,4 +146,5 @@ def text_plot_larger():
 text_plot_larger()
 os.system('epstopdf "With Decorator Larger.eps"')
 ```
-![with decorator larger](https://user-images.githubusercontent.com/28139045/33397653-299bd9f6-d501-11e7-8151-af068484866f.png)
+
+<img src="https://user-images.githubusercontent.com/28139045/33397653-299bd9f6-d501-11e7-8151-af068484866f.png" width="600">
