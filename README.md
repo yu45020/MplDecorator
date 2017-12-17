@@ -14,10 +14,9 @@ R users may want to check ggpubr to easily get publication-ready plots.
 ## Installing
 
 In terminal, type 
-
-    ```
+```
     pip install git+https://github.com/yu45020/MplDecorator/
-    ```
+```
 or. Download the package and unzip it. In terminal and the directory of the package, run 
     ```
     python setup.py install
@@ -42,16 +41,16 @@ subprocess.call(["epstopdf", "fig_name.eps"])
 ## Available Decorators
 
 ### @MplDecorator.latex_decorator
-```
-Parameters can be customized in [latex.py](https://github.com/yu45020/MplDecorator/blob/master/MplDecorator/latex.py: 
 
+Parameters can be customized in [latex.py](https://github.com/yu45020/MplDecorator/blob/master/MplDecorator/latex.py): 
+```
 font size for all: 8
 font family: serif
 usetex: True
 figure size: (width=4.296, height=2.655)
 savefig format: eps
 savefig.dpi: 900 
-seaborn.style: 'seaborn-whitegrid' & "seaborn-paper"
+seaborn.style: 'seaborn-white' & "seaborn-paper"
 plt.switch_backend: pgf (better for saving figs in eps and pdf, but no preview)
 ```
 
@@ -99,6 +98,7 @@ def text_plot():
     ax.set_xlabel('Some x')
     ax.set_ylabel('Some y')
     ax.legend(loc='best')
+    plt.grid()
     fig.savefig("With Decorator.eps")
 
 text_plot()
@@ -124,7 +124,7 @@ text_plot2()
 os.system('epstopdf "After Decorator.eps"')
 ```
 
-(Note: this is the default plot, and its settings are not changed by the previous decorator)
+(Note: this is the default plot style, and its settings are not changed by the previous decorator)
 
 <img src="https://user-images.githubusercontent.com/28139045/33397652-29557146-d501-11e7-9967-7fefa71fd639.png" width="600">
 
@@ -141,6 +141,7 @@ def text_plot_larger():
     ax.set_xlabel('Some x')
     ax.set_ylabel('Some y')
     ax.legend(loc='best')
+    plt.grid()
     fig.savefig("With Decorator Larger.eps")
 
 text_plot_larger()
