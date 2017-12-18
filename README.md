@@ -2,7 +2,7 @@
 
 Python decorator for matplotlib and seaborn plots. Users only need to add one line on top of a plotting function to set pre-customized styles without changing current plot styles. The current version supports LaTex decorator.
 
-The internal color scheme for multi-line plots is inherited from [Yi-Xin Liu's mpltex](https://github.com/liuyxpp/mpltex)'s color file and is modified to be compatible in Python 3.  The default scheme is Tableau classic 10 and can be changed to ColorBrewer Set 1 and Tableau classic 20 in the [color.py](https://github.com/yu45020/MplDecorator/blob/master/MplDecorator/colors.py) file.  For information on Tableau scheme can be found in [Palettable: Color palettes for Python](https://jiffyclub.github.io/palettable/). 
+The internal color scheme for multi-line plots is inherited from [Yi-Xin Liu's mpltex](https://github.com/liuyxpp/mpltex)'s color file and is modified to be compatible in Python 3.  The default scheme is Tableau classic 10 and can be changed to ColorBrewer Set 1 and Tableau classic 20 in the [color.py](https://github.com/yu45020/MplDecorator/blob/master/MplDecorator/colors.py) file.  Information on Tableau scheme can be found in [Palettable: Color palettes for Python](https://jiffyclub.github.io/palettable/). 
 
 This tool is inspired by and built on
 [Yi-Xin Liu's mpltex](https://github.com/liuyxpp/mpltex) and 
